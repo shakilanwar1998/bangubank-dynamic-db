@@ -1,23 +1,23 @@
 <?php
-namespace App\Models;
-class Model {
+namespace App\DB;
+
+class JSON implements DatabaseInterface {
     protected string $filePath;
-    public function __construct() {
-        $this->filePath = './data/'.$this->fileName;
+
+    public function __construct(string $filePath) {
+        $this->filePath = $filePath;
         if (!file_exists($this->filePath)) {
             file_put_contents($this->filePath, json_encode([]));
         }
     }
 
-    public function create(array $data): array
-    {
+    public function create(array $data): array {
         $fileData = json_decode(file_get_contents($this->filePath), true);
         $auto_increment = $fileData['auto_increment'] ?? 0;
         $auto_increment++;
         $fileData['auto_increment'] = $data['id'] = $auto_increment;
 
         $fileData['data'][] = $data;
-
         file_put_contents($this->filePath, json_encode($fileData));
         return $data;
     }

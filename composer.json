@@ -15,5 +15,8 @@
             "email": "38348848+shakilanwar1998@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-json": "*",
+      "ext-pdo": "*"
+    }
 }

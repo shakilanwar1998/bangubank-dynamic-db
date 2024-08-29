@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\DB\Model;
+
 class User extends Model
 {
-    protected $fileName = 'users.json';
+    protected string $fileName = 'users.json';
+    protected string $tableName = 'users';
 }
