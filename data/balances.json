@@ -1,0 +1,12 @@
+{
+    "data": [
+        {
+            "user_id": 1,
+            "amount": 102
+        },
+        {
+            "user_id": 2,
+            "amount": 100
+        }
+    ]
+}

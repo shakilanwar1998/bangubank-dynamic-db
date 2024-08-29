@@ -1,0 +1,19 @@
+{
+    "name": "shakilanwar/bangubank",
+    "description": "BanguBank is a simple banking application with features for both 'Admin' and 'Customer' users. It's a HTML template starter pack for Laravel Career Path by Interactive Cares students.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": ["helper.php"]
+    },
+    "authors": [
+        {
+            "name": "Shakil Anwar",
+            "email": "38348848+shakilanwar1998@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
