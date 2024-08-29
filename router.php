@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\AdminController;
 use App\Controllers\AuthController;
 use App\Controllers\DashboardController;
 use App\Controllers\HomeController;
@@ -8,6 +9,25 @@ use App\Controllers\TransactionController;
 function authMiddleware(): void
 {
     if (!isset($_SESSION['user_id'])) {
+        header('Location: /login');
+        exit();
+    }
+
+    $user = (new \App\Models\User())->findOne('id',$_SESSION['user_id']);
+    if($user['role'] != 2) {
+        header('Location: /login');
+        exit();
+    }
+}
+
+function adminMiddleware(): void
+{
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: /login');
+        exit();
+    }
+    $user = (new \App\Models\User())->findOne('id',$_SESSION['user_id']);
+    if($user['role'] != 1) {
         header('Location: /login');
         exit();
     }
@@ -94,9 +114,35 @@ switch ($request) {
 
 
     case '/admin':
-        authMiddleware();
-        $controller = new \App\Controllers\AdminController();
+        adminMiddleware();
+        $controller = new AdminController();
         $controller->index();
+        break;
+
+    case '/customers':
+        adminMiddleware();
+        $controller = new AdminController();
+        $controller->getCustomers();
+        break;
+
+    case '/transactions':
+        adminMiddleware();
+        $controller = new AdminController();
+        $controller->getTransactions();
+        break;
+
+
+    case '/add_customer':
+        adminMiddleware();
+        $controller = new AdminController();
+        $controller->addCustomer();
+        break;
+
+
+    case '/customer_transactions':
+        adminMiddleware();
+        $controller = new AdminController();
+        $controller->getCustomerTransactions();
         break;
 
     default:

@@ -69,18 +69,20 @@ class MySQL implements DatabaseInterface {
         $sql = "SELECT * FROM {$this->table}";
         $values = [];
 
-        if (!empty($filters)) {
+        if (!empty($filters) && isset($filters['conditions'])) {
             $conditions = [];
-            foreach ($filters as $filter) {
+            $operator = strtoupper($filters['operator'] ?? 'AND');
+
+            foreach ($filters['conditions'] as $filter) {
                 if (isset($filter['key'], $filter['value'])) {
-                    $operator = $filter['operator'] ?? '=';
-                    $conditions[] = "{$filter['key']} {$operator} ?";
+                    $conditionOperator = $filter['operator'] ?? '=';
+                    $conditions[] = "{$filter['key']} {$conditionOperator} ?";
                     $values[] = $filter['value'];
                 }
             }
 
-            if ($conditions) {
-                $sql .= ' WHERE ' . implode(' AND ', $conditions);
+            if (!empty($conditions)) {
+                $sql .= ' WHERE ' . implode(" {$operator} ", $conditions);
             }
         }
 

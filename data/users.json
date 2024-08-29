@@ -1,1 +1,26 @@
-{"auto_increment":2,"data":[{"name":"Shakil Anwar","email":"shakilanwar1998@gmail.com","password":"$2y$10$Zw4jAp\/bHCbV\/jsoG3eQOO2k3IcVu.IEqFP3UjI4cYo66SWbXu1Se","role":2,"id":1},{"name":"Shihabun Sakib","email":"shiba@gmail.com","password":"$2y$10$woYuAnyOEpueuhXQQ6q3gOWSaRo2SHBeWRsyOVmxH7B6zYmryNbo2","role":2,"id":2}]}
+{
+  "auto_increment": 3,
+  "data": [
+    {
+      "name": "Shakil Anwar",
+      "email": "shakilanwar1998@gmail.com",
+      "password": "$2y$10$Zw4jAp\/bHCbV\/jsoG3eQOO2k3IcVu.IEqFP3UjI4cYo66SWbXu1Se",
+      "role": 2,
+      "id": 1
+    },
+    {
+      "name": "Shihabun Sakib",
+      "email": "shiba@gmail.com",
+      "password": "$2y$10$woYuAnyOEpueuhXQQ6q3gOWSaRo2SHBeWRsyOVmxH7B6zYmryNbo2",
+      "role": 2,
+      "id": 2
+    },
+    {
+      "name": "Admin",
+      "email": "admin@bangubank.com",
+      "password": "$2y$10$woYuAnyOEpueuhXQQ6q3gOWSaRo2SHBeWRsyOVmxH7B6zYmryNbo2",
+      "role": 1,
+      "id": 3
+    }
+  ]
+}
