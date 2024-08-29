@@ -15,7 +15,7 @@ function authMiddleware(): void
 
     $user = (new \App\Models\User())->findOne('id',$_SESSION['user_id']);
     if($user['role'] != 2) {
-        header('Location: /login');
+        header('Location: /admin');
         exit();
     }
 }
@@ -28,7 +28,7 @@ function adminMiddleware(): void
     }
     $user = (new \App\Models\User())->findOne('id',$_SESSION['user_id']);
     if($user['role'] != 1) {
-        header('Location: /login');
+        header('Location: /dashboard');
         exit();
     }
 }
@@ -138,11 +138,18 @@ switch ($request) {
         $controller->addCustomer();
         break;
 
-
-    case '/customer_transactions':
+    case '/post_add_customer':
         adminMiddleware();
         $controller = new AdminController();
-        $controller->getCustomerTransactions();
+        $controller->postAddCustomer();
+        break;
+
+
+    case (bool)preg_match('#^/customer_transactions(?:/([^/]+))?$#', $request, $matches):
+        adminMiddleware();
+        $controller = new AdminController();
+        $param = $matches[1] ?? null;
+        $controller->getCustomerTransactions($param);
         break;
 
     default:

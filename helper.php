@@ -22,3 +22,13 @@ function dump(...$var): void
     }
     echo '</pre>';
 }
+
+function getInitial($name): string
+{
+    $words = explode(' ', $name);
+    $initial = '';
+    foreach ($words as $word) {
+        $initial .= strtoupper($word[0]);
+    }
+    return $initial;
+}
