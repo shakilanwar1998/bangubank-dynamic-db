@@ -9,7 +9,7 @@ return [
     'mysql' => [
         'host' => 'localhost',
         'user' => 'root',
-        'password' => '09shakil1998',
+        'password' => '',
         'database' => 'bangubank'
     ]
 ];
